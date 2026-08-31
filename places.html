@@ -1,1941 +1,2290 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================================================
+   RESET
+========================================================= */
 
-<head>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+/* =========================================================
+   ROOT
+========================================================= */
 
-    <title>Places</title>
+:root {
 
-    <link rel="stylesheet" href="places.css">
+    --ochre: #c5963d;
+    --deep-ochre: #a87927;
 
-    <!-- Google Fonts -->
+    --earth: #7b5635;
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet"
-    >
+    --forest: #3f5d45;
+    --deep-green: #294535;
 
-</head>
+    --cream: #f5edda;
+    --text: #29352c;
 
+    --light-green: #b8d0b4;
 
-<body>
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+    --h1-font-colour: #264131;
 
-    <section class="place-hero" id="placeHero">
+    --button-radius: 1rem;
 
-    
+}
 
 
-        <div class="hero-overlay"></div>
+/* =========================================================
+   BASE
+========================================================= */
 
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
 
-        <div class="hero-content">
 
+body {
+    background-color: var(--cream);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    position: relative;
+}
 
-            <!-- Tags -->
 
-            <div
-                class="place-tags"
-                id="placeTags"
-            >
-            </div>
+body::before {
+    content: "";
 
+    position: fixed;
+    inset: 0;
 
+    background-image:
+        url("images/parchment-bg.png");
 
-            <!-- Place Name -->
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-            <h1 id="placeName">
-                Ziro Valley
-            </h1>
+    z-index: -2;
+}
 
 
+button {
+    font-family: inherit;
+}
 
-            <!-- Location -->
 
-            <p
-                class="hero-location"
-                id="placeLocation"
-            >
-                📍 Arunachal Pradesh, India
-            </p>
+/* =========================================================
+   NAVBAR
+   Matches the main website navbar
+========================================================= */
 
+.navbar {
 
+    height: 8.2rem;
+    width: 100%;
 
-            <!-- Details -->
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-            <div class="hero-meta">
+    padding: 0 5%;
 
+    background:
+        rgba(245, 237, 218, 0.50);
 
-                <span id="placeAltitude">
-                    ⛰ 1,500 m
-                </span>
+    border-bottom:
+        1px solid rgba(63, 93, 69, 0.12);
 
+    position: fixed;
 
-                <span id="placeRating">
-                    ★ 4.8
-                </span>
+    top: 0;
+    left: 0;
 
+    z-index: 1000;
 
-                <span id="placeType">
-                    Hidden Nature Escape
-                </span>
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
 
 
-            </div>
+/* BRAND */
 
+.brand {
 
-        </div>
+    display: flex;
+    align-items: center;
 
+    gap: 12px;
 
+    min-width: 22rem;
 
-        <!-- Hero Buttons -->
+}
 
-        <div class="hero-actions">
 
+.logo {
 
-            <button
-                class="save-button"
-                id="saveButton"
-            >
-                ♡ Save Place
-            </button>
+    display: flex;
+    align-items: center;
 
+}
 
-            <button
-                class="share-button"
-                id="shareButton"
-            >
-                ↗ Share
-            </button>
 
+.logo a {
 
-        </div>
+    display: flex;
+    align-items: center;
 
+    text-decoration: none;
 
-        <div class="scroll-indicator">
-            Scroll to explore ↓
-        </div>
+}
 
 
-    </section>
+.logo img {
 
+    display: block;
 
+    width: 65px;
+    height: auto;
 
-    <!-- =====================================================
-         QUICK STATS
-    ====================================================== -->
+}
 
-    <section class="quick-stats-section">
 
+/* WEBSITE NAME */
 
-        <div class="quick-stats">
+.website-name {
 
+    display: flex;
+    align-items: center;
 
-            <div class="quick-stat">
+}
 
-                <span class="stat-icon">
-                    ☀
-                </span>
 
-                <div>
+.website-name a {
 
-                    <small>
-                        Best Season
-                    </small>
+    display: flex;
+    align-items: center;
 
-                    <strong id="bestSeason">
-                        October – April
-                    </strong>
+    text-decoration: none;
 
-                </div>
+}
 
-            </div>
 
+.website-name img {
 
+    display: block;
 
-            <div class="quick-stat">
+    width: 100px;
+    height: auto;
 
-                <span class="stat-icon">
-                    👥
-                </span>
+}
 
-                <div>
 
-                    <small>
-                        Crowd Level
-                    </small>
+/* NAVIGATION LINKS */
 
-                    <strong id="quickCrowd">
-                        Low
-                    </strong>
+.nav-links {
 
-                </div>
+    display: flex;
 
-            </div>
+    align-items: center;
 
+    gap: 3.8rem;
 
+}
 
-            <div class="quick-stat">
 
-                <span class="stat-icon">
-                    ₹
-                </span>
+.nav-links a {
 
-                <div>
+    position: relative;
 
-                    <small>
-                        Average Budget
-                    </small>
+    text-decoration: none;
 
-                    <strong id="avgBudget">
-                        ₹12,000 – ₹18,000
-                    </strong>
+    color: #596257;
 
-                </div>
+    font-size: 1.4rem;
 
-            </div>
+    font-weight: 500;
 
+    padding: 0.8rem 0;
 
+}
 
-            <div class="quick-stat">
 
-                <span class="stat-icon">
-                    🗓
-                </span>
+.nav-links a:hover,
+.nav-links a.active {
 
-                <div>
+    color: var(--deep-green);
 
-                    <small>
-                        Ideal Stay
-                    </small>
+}
 
-                    <strong id="idealStay">
-                        3 – 4 Days
-                    </strong>
 
-                </div>
+.nav-links a::after {
 
-            </div>
+    content: "";
 
+    position: absolute;
 
+    left: 0;
+    bottom: 0;
 
-            <div class="quick-stat">
+    width: 0;
+    height: 0.2rem;
 
-                <span class="stat-icon">
-                    📶
-                </span>
+    background: var(--ochre);
 
-                <div>
+    transition: width 0.25s ease;
 
-                    <small>
-                        Connectivity
-                    </small>
+}
 
-                    <strong id="connectivity">
-                        Moderate
-                    </strong>
 
-                </div>
+.nav-links a:hover::after,
+.nav-links a.active::after {
 
-            </div>
+    width: 100%;
 
+}
 
-        </div>
 
+/* =========================================================
+   NAV ACTIONS
+========================================================= */
 
-    </section>
+.nav-actions {
 
+    min-width: 22rem;
 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
-    <!-- =====================================================
-         MAIN CONTENT
-    ====================================================== -->
+    gap: 1.6rem;
 
-    <main class="place-main">
+}
 
 
-        <div class="content-layout">
+.auth-link {
 
+    text-decoration: none;
 
-            <!-- =============================================
-                 LEFT MAIN CONTENT
-            ============================================== -->
+    color: var(--deep-green);
 
-            <div class="main-content">
+    font-size: 1.4rem;
 
+    font-weight: 500;
 
+}
 
-                <!-- ABOUT -->
 
-                <section class="content-section">
+.dark-btn {
 
-                    <div class="section-heading">
+    text-decoration: none;
 
-                        <span>
-                            01
-                        </span>
+    padding: 1rem 1.8rem;
 
-                        <h2>
-                            About the Place
-                        </h2>
+    border-radius: 1rem;
 
-                    </div>
+    background: var(--ochre);
 
+    color: white;
 
-                    <div
-                        class="about-text"
-                        id="aboutText"
-                    >
+    font-size: 1.3rem;
 
-                        <p></p>
+    font-weight: 600;
 
-                        <p></p>
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
 
-                    </div>
+}
 
-                </section>
 
+.dark-btn:hover {
 
+    background: var(--deep-ochre);
 
-                <!-- CROWD LEVEL -->
+    transform: translateY(-0.2rem);
 
-                <section class="content-section">
+}
 
 
-                    <div class="section-heading">
+/* PROFILE */
 
-                        <span>
-                            02
-                        </span>
+.profile {
 
-                        <h2>
-                            Crowd Level
-                        </h2>
+    display: flex;
+    align-items: center;
 
-                    </div>
+    gap: 0.8rem;
 
+    position: relative;
 
+    color: var(--deep-green);
 
-                    <div class="crowd-card">
+    font-size: 1.3rem;
 
+    font-weight: 500;
 
-                        <div class="crowd-top">
+    cursor: pointer;
 
-                            <div>
+}
 
-                                <h3 id="crowdTitle">
-                                    Peaceful & Uncrowded
-                                </h3>
 
-                                <p>
-                                    Current destination popularity
-                                </p>
+.profile-icon {
 
-                            </div>
+    width: 3.4rem;
+    height: 3.4rem;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-                            <strong
-                                class="crowd-percentage"
-                                id="crowdPercentage"
-                            >
-                                25%
-                            </strong>
+    border-radius: 50%;
 
-                        </div>
+    background:
+        rgba(63, 93, 69, 0.12);
 
+}
 
 
-                        <!-- Progress -->
+.profile-message {
 
-                        <div class="progress-track">
+    position: absolute;
 
-                            <div
-                                class="progress-fill"
-                                id="crowdProgress"
-                            >
-                            </div>
+    top: 5rem;
+    right: 0;
 
-                        </div>
+    width: 18rem;
 
+    padding: 1.4rem;
 
+    background: white;
 
-                        <!-- Seasonal Crowd -->
+    border-radius: 1.5rem;
 
-                        <div class="seasonal-crowd">
+    box-shadow:
+        0 1rem 3rem rgba(41, 69, 53, 0.18);
 
+    display: flex;
+    flex-direction: column;
 
-                            <div class="season">
+    gap: 0.3rem;
 
-                                <span>
-                                    Jan – Mar
-                                </span>
+    opacity: 0;
+    visibility: hidden;
 
-                                <div class="mini-track">
+    transform: translateY(-0.5rem);
 
-                                    <div
-                                        class="mini-fill low"
-                                        style="width: 25%;"
-                                    ></div>
+    transition: 0.25s ease;
 
-                                </div>
+}
 
-                            </div>
 
+.profile-message strong {
 
+    color: var(--deep-green);
 
-                            <div class="season">
+    font-size: 1.4rem;
 
-                                <span>
-                                    Apr – Jun
-                                </span>
+}
 
-                                <div class="mini-track">
 
-                                    <div
-                                        class="mini-fill medium"
-                                        style="width: 55%;"
-                                    ></div>
+.profile-message small {
 
-                                </div>
+    font-size: 1.2rem;
 
-                            </div>
+    color:
+        rgba(41, 69, 53, 0.65);
 
+}
 
 
-                            <div class="season">
+.profile-message.show {
 
-                                <span>
-                                    Jul – Sep
-                                </span>
+    opacity: 1;
+    visibility: visible;
 
-                                <div class="mini-track">
+    transform: translateY(0);
 
-                                    <div
-                                        class="mini-fill high"
-                                        style="width: 80%;"
-                                    ></div>
+}
 
-                                </div>
 
-                            </div>
+/* =========================================================
+   HERO
+========================================================= */
 
+.place-hero {
 
+    min-height: 100vh;
 
-                            <div class="season">
+    position: relative;
 
-                                <span>
-                                    Oct – Dec
-                                </span>
+    display: flex;
 
-                                <div class="mini-track">
+    align-items: flex-end;
 
-                                    <div
-                                        class="mini-fill low"
-                                        style="width: 35%;"
-                                    ></div>
+    padding:
+        16rem 8%
+        9rem;
 
-                                </div>
+    background-size: cover;
 
-                            </div>
+    background-position: center;
 
+    background-attachment: fixed;
 
-                        </div>
+    overflow: hidden;
 
+}
 
 
-                        <!-- Smart Tip -->
+.hero-overlay {
 
-                        <div class="smart-tip">
+    position: absolute;
 
-                            <span>
-                                ✦
-                            </span>
+    inset: 0;
 
-                            <p id="crowdTip">
-                                For the quietest experience, visit during
-                                weekdays and avoid major festival periods.
-                            </p>
+    background:
+        linear-gradient(
+            to top,
+            rgba(20, 38, 29, 0.90),
+            rgba(20, 38, 29, 0.18),
+            rgba(20, 38, 29, 0.10)
+        );
 
-                        </div>
+}
 
 
-                    </div>
+.hero-content {
 
+    position: relative;
 
-                </section>
+    z-index: 2;
 
+    max-width: 90rem;
 
+}
 
-                <!-- THINGS TO DO -->
 
-                <section class="content-section">
+.place-tags {
 
+    display: flex;
 
-                    <div class="section-heading">
+    flex-wrap: wrap;
 
-                        <span>
-                            03
-                        </span>
+    gap: 1rem;
 
-                        <h2>
-                            Things To Do
-                        </h2>
+    margin-bottom: 2rem;
 
-                    </div>
+}
 
 
-                    <div
-                        class="activities-grid"
-                        id="activitiesGrid"
-                    >
-                    </div>
+.place-tags span {
 
+    padding:
+        0.7rem 1.3rem;
 
-                </section>
+    border:
+        1px solid rgba(255, 255, 255, 0.35);
 
+    border-radius: 5rem;
 
+    background:
+        rgba(255, 255, 255, 0.12);
 
-                <!-- HOW TO REACH -->
+    backdrop-filter: blur(5px);
 
-                <section class="content-section">
+    color: white;
 
+    font-size: 1.3rem;
 
-                    <div class="section-heading">
+}
 
-                        <span>
-                            04
-                        </span>
 
-                        <h2>
-                            How To Reach
-                        </h2>
+.place-hero h1 {
 
-                    </div>
+    font-family:
+        "Playfair Display", serif;
 
+    font-size:
+        clamp(5rem, 9vw, 11rem);
 
-                    <div
-                        class="reach-timeline"
-                        id="reachTimeline"
-                    >
-                    </div>
+    color: white;
 
+    line-height: 1;
 
+    letter-spacing: -0.3rem;
 
-                    <div
-                        class="permit-warning"
-                        id="permitWarning"
-                    >
-                        ⚠ Please check all current permit and entry
-                        requirements before travelling.
-                    </div>
+    margin-bottom: 2rem;
 
+}
 
-                </section>
 
+.hero-location {
 
+    color:
+        rgba(255, 255, 255, 0.85);
 
-                <!-- LOCAL TIPS -->
+    font-size: 1.9rem;
 
-                <section class="content-section">
+    margin-bottom: 2.5rem;
 
+}
 
-                    <div class="section-heading">
 
-                        <span>
-                            05
-                        </span>
+.hero-meta {
 
-                        <h2>
-                            Local Tips
-                        </h2>
+    display: flex;
 
-                    </div>
+    flex-wrap: wrap;
 
+    gap: 2.5rem;
 
-                    <div
-                        class="tips-list"
-                        id="tipsList"
-                    >
-                    </div>
+    color: white;
 
+    font-size: 1.5rem;
 
-                </section>
+}
 
 
+.hero-meta span {
 
-                <!-- BEST TIME -->
+    padding-left: 1rem;
 
-                <section class="content-section">
+    border-left:
+        2px solid var(--ochre);
 
+}
 
-                    <div class="section-heading">
 
-                        <span>
-                            06
-                        </span>
+.hero-actions {
 
-                        <h2>
-                            Best Time To Visit
-                        </h2>
+    position: absolute;
 
-                    </div>
+    z-index: 3;
 
+    right: 8%;
 
-                    <div class="season-chips">
+    bottom: 9rem;
 
+    display: flex;
 
-                        <div class="season-chip best">
+    gap: 1.2rem;
 
-                            <span>
-                                BEST
-                            </span>
+}
 
-                            <strong>
-                                Oct – Apr
-                            </strong>
 
-                            <p>
-                                Pleasant weather
-                            </p>
+.hero-actions button {
 
-                        </div>
+    padding:
+        1.3rem 2rem;
 
+    border-radius: 1rem;
 
+    cursor: pointer;
 
-                        <div class="season-chip good">
+    font-size: 1.4rem;
 
-                            <span>
-                                GOOD
-                            </span>
+    font-weight: 600;
 
-                            <strong>
-                                May – Jun
-                            </strong>
+    transition: 0.25s ease;
 
-                            <p>
-                                Warmer but enjoyable
-                            </p>
+}
 
-                        </div>
 
+.save-button {
 
+    border:
+        1px solid rgba(255, 255, 255, 0.5);
 
-                        <div class="season-chip off">
+    background:
+        rgba(255, 255, 255, 0.15);
 
-                            <span>
-                                OFF
-                            </span>
+    color: white;
 
-                            <strong>
-                                Jul – Sep
-                            </strong>
+    backdrop-filter: blur(6px);
 
-                            <p>
-                                Heavy rainfall
-                            </p>
+}
 
-                        </div>
 
+.share-button {
 
-                    </div>
+    border: none;
 
+    background: var(--ochre);
 
-                </section>
+    color: white;
 
+}
 
 
-                <!-- MAP -->
+.hero-actions button:hover {
 
-                <section class="content-section map-section">
+    transform: translateY(-0.3rem);
 
+}
 
-                    <div class="section-heading">
 
-                        <span>
-                            07
-                        </span>
+.scroll-indicator {
 
-                        <h2>
-                            Explore on Map
-                        </h2>
+    position: absolute;
 
-                    </div>
+    z-index: 2;
 
+    bottom: 2.5rem;
 
-                    <p class="map-intro">
+    left: 50%;
 
-                        Explore the destination location and surrounding area.
+    transform: translateX(-50%);
 
-                    </p>
+    color:
+        rgba(255, 255, 255, 0.75);
 
+    font-size: 1.2rem;
 
+    letter-spacing: 0.1rem;
 
-                    <!-- EarthGIS Map -->
+}
 
-                    <div class="map-wrapper">
 
+/* =========================================================
+   QUICK STATS
+========================================================= */
 
-                        <div
-                            id="earthgisMap"
-                            class="earthgis-map"
-                        >
+.quick-stats-section {
 
-                            <div class="map-placeholder">
+    position: relative;
 
-                                <div class="map-icon">
-                                    🗺
-                                </div>
+    z-index: 5;
 
-                                <h3>
-                                    Interactive Map
-                                </h3>
+    margin-top: -4.5rem;
 
-                                <p>
-                                    Connect your EarthGIS API here.
-                                </p>
+    padding: 0 5%;
 
-                            </div>
+}
 
-                        </div>
 
+.quick-stats {
 
-                    </div>
+    max-width: 130rem;
 
+    margin: auto;
 
-                    <p class="map-note">
+    display: grid;
 
-                        Replace the map initialization in
-                        <strong>place.js</strong> with your EarthGIS API
-                        configuration.
+    grid-template-columns:
+        repeat(5, 1fr);
 
-                    </p>
+    background:
+        rgba(245, 237, 218, 0.92);
 
+    backdrop-filter: blur(10px);
 
-                </section>
+    border:
+        1px solid rgba(63, 93, 69, 0.12);
 
+    border-radius: 1.5rem;
 
-            </div>
+    box-shadow:
+        0 1.5rem 4rem rgba(41, 69, 53, 0.14);
 
+}
 
 
-            <!-- =============================================
-                 SIDEBAR
-            ============================================== -->
+.quick-stat {
 
-            <aside class="sidebar">
+    padding: 2.4rem 2rem;
 
+    display: flex;
 
+    align-items: center;
 
-                <!-- PHOTO GALLERY -->
+    gap: 1.2rem;
 
-                <div class="sidebar-card">
+    border-right:
+        1px solid rgba(41, 69, 53, 0.10);
 
+}
 
-                    <div class="sidebar-heading">
 
-                        <h3>
-                            Photo Gallery
-                        </h3>
+.quick-stat:last-child {
 
-                        <span>
-                            Explore
-                        </span>
+    border-right: none;
 
-                    </div>
+}
 
 
-                    <div
-                        class="gallery-grid"
-                        id="galleryGrid"
-                    >
-                    </div>
+.stat-icon {
 
+    width: 4.2rem;
 
-                </div>
+    height: 4.2rem;
 
+    display: flex;
 
+    align-items: center;
 
-                <!-- NEARBY PLACES -->
+    justify-content: center;
 
-                <div class="sidebar-card">
+    border-radius: 50%;
 
+    background:
+        rgba(197, 150, 61, 0.16);
 
-                    <div class="sidebar-heading">
+    font-size: 1.9rem;
 
-                        <h3>
-                            Nearby Places
-                        </h3>
+}
 
-                        <span>
-                            Around here
-                        </span>
 
-                    </div>
+.quick-stat small {
 
+    display: block;
 
-                    <div
-                        class="nearby-list"
-                        id="nearbyList"
-                    >
-                    </div>
+    color:
+        rgba(41, 69, 53, 0.58);
 
+    font-size: 1.2rem;
 
-                </div>
+    margin-bottom: 0.5rem;
 
+}
 
 
-                <!-- SAVE CARD -->
+.quick-stat strong {
 
-                <div class="sidebar-save-card">
+    display: block;
 
-                    <span>
-                        ♡
-                    </span>
+    color: var(--deep-green);
 
-                    <h3>
-                        Want to visit later?
-                    </h3>
+    font-size: 1.4rem;
 
-                    <p>
-                        Save this place to your wishlist and come back
-                        whenever you are ready to explore.
-                    </p>
+}
 
-                    <button
-                        id="sidebarSaveButton"
-                    >
-                        Save to Wishlist
-                    </button>
 
-                </div>
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
 
+.place-main {
 
-            </aside>
+    padding:
+        10rem 5%
+        8rem;
 
+}
 
-        </div>
 
+.content-layout {
 
-    </main>
+    max-width: 130rem;
 
+    margin: auto;
 
+    display: grid;
 
-    <!-- =====================================================
-         SIMILAR PLACES
-    ====================================================== -->
+    grid-template-columns:
+        minmax(0, 1fr)
+        34rem;
 
-    <section class="similar-section">
+    gap: 7rem;
 
+}
 
-        <div class="similar-container">
 
+.content-section {
 
-            <div class="similar-heading">
+    padding-bottom: 8rem;
 
-                <div>
+}
 
-                    <span>
-                        KEEP EXPLORING
-                    </span>
 
-                    <h2>
-                        Similar Places
-                    </h2>
+.section-heading {
 
-                </div>
+    display: flex;
 
+    align-items: center;
 
-                <a href="places.html">
-                    View All Places →
-                </a>
+    gap: 1.5rem;
 
-            </div>
+    margin-bottom: 3rem;
 
+}
 
 
-            <div
-                class="similar-grid"
-                id="similarGrid"
-            >
-            </div>
+.section-heading > span {
 
+    color: var(--ochre);
 
-        </div>
+    font-size: 1.3rem;
 
+    font-weight: 700;
 
-    </section>
+}
 
 
+.section-heading h2 {
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    font-family:
+        "Playfair Display", serif;
 
-    <footer class="footer">
+    color: var(--deep-green);
 
-        <div>
+    font-size: 4.2rem;
 
-            <strong>
-                Beyond The Crowd
-            </strong>
+}
 
-            <span>
-                Explore the unexplored.
-            </span>
 
-        </div>
+.about-text {
 
+    max-width: 85rem;
 
-        <p>
-            Discover places beyond the usual tourist trail.
-        </p>
+}
 
-    </footer>
 
+.about-text p {
 
+    font-size: 1.8rem;
 
-    <script src="script.js"></script>
+    line-height: 1.9;
 
-    <script src="place.js"></script>
+    color:
+        rgba(41, 69, 53, 0.75);
 
+    margin-bottom: 2rem;
 
-</body>
+}
 
-</html><!DOCTYPE html>
-<html lang="en">
 
-<head>
+/* =========================================================
+   CROWD
+========================================================= */
 
-    <meta charset="UTF-8">
+.crowd-card {
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    padding: 3.5rem;
 
-    <title>Place Details | Beyond The Crowd</title>
+    background:
+        rgba(255, 255, 255, 0.45);
 
-    <link rel="stylesheet" href="place.css">
+    border:
+        1px solid rgba(63, 93, 69, 0.12);
 
-    <!-- Google Fonts -->
+    border-radius: 1.5rem;
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet"
-    >
+}
 
-</head>
 
+.crowd-top {
 
-<body>
+    display: flex;
 
+    justify-content: space-between;
 
-    <!-- =====================================================
-         NAVBAR
-    ====================================================== -->
+    gap: 2rem;
 
-    <nav class="navbar">
+    margin-bottom: 2rem;
 
+}
 
-        <!-- Brand -->
 
-        <div class="brand">
+.crowd-top h3 {
 
-            <div class="logo">
+    color: var(--deep-green);
 
-                <a href="index.html">
+    font-size: 2.2rem;
 
-                    <img
-                        src="images/web-logo.png"
-                        alt="Beyond The Crowd Logo"
-                    >
+}
 
-                </a>
 
-            </div>
+.crowd-top p {
 
+    margin-top: 0.7rem;
 
-            <div class="website-name">
-                Beyond The Crowd
-            </div>
+    color:
+        rgba(41, 69, 53, 0.60);
 
-        </div>
+    font-size: 1.4rem;
 
+}
 
 
-        <!-- Navigation -->
+.crowd-percentage {
 
-        <div class="nav-links">
+    color: var(--ochre);
 
-            <a href="index.html">
-                Home
-            </a>
+    font-size: 3rem;
 
-            <a href="index.html#features">
-                Features
-            </a>
+}
 
-            <a href="places.html" class="active">
-                Places
-            </a>
 
-            <a href="about.html">
-                About
-            </a>
+.progress-track {
 
-        </div>
+    width: 100%;
 
+    height: 1rem;
 
+    background:
+        rgba(41, 69, 53, 0.10);
 
-        <!-- Right Side -->
+    border-radius: 5rem;
 
-        <div class="nav-actions">
+    overflow: hidden;
 
-            <a
-                href="signin.html"
-                class="auth-link"
-            >
-                Sign In
-            </a>
+}
 
 
-            <a
-                href="register.html"
-                class="dark-btn"
-            >
-                Register
-            </a>
+.progress-fill {
 
+    width: 0;
 
-            <div
-                class="profile"
-                id="profileButton"
-            >
+    height: 100%;
 
-                <div class="profile-icon">
-                    👤
-                </div>
+    background:
+        linear-gradient(
+            90deg,
+            var(--forest),
+            var(--ochre)
+        );
 
-                <span>
-                    Profile
-                </span>
+    border-radius: 5rem;
 
+    transition:
+        width 1.5s ease;
 
-                <div
-                    class="profile-message"
-                    id="profileMessage"
-                >
+}
 
-                    <strong>
-                        Register / Sign in
-                    </strong>
 
-                    <small>
-                        to see your profile.
-                    </small>
+.seasonal-crowd {
 
-                </div>
+    display: grid;
 
-            </div>
+    grid-template-columns:
+        repeat(2, 1fr);
 
-        </div>
+    gap: 2rem;
 
+    margin-top: 3rem;
 
-    </nav>
+}
 
 
+.season span {
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+    display: block;
 
-    <section
-        class="place-hero"
-        id="placeHero"
-    >
+    color: var(--deep-green);
 
+    font-size: 1.3rem;
 
-        <div class="hero-overlay"></div>
+    margin-bottom: 0.8rem;
 
+}
 
-        <div class="hero-content">
 
+.mini-track {
 
-            <!-- Tags -->
+    height: 0.7rem;
 
-            <div
-                class="place-tags"
-                id="placeTags"
-            >
-            </div>
+    background:
+        rgba(41, 69, 53, 0.10);
 
+    border-radius: 5rem;
 
+    overflow: hidden;
 
-            <!-- Place Name -->
+}
 
-            <h1 id="placeName">
-                Ziro Valley
-            </h1>
 
+.mini-fill {
 
+    height: 100%;
 
-            <!-- Location -->
+    border-radius: 5rem;
 
-            <p
-                class="hero-location"
-                id="placeLocation"
-            >
-                📍 Arunachal Pradesh, India
-            </p>
+}
 
 
+.mini-fill.low {
 
-            <!-- Details -->
+    background: var(--forest);
 
-            <div class="hero-meta">
+}
 
 
-                <span id="placeAltitude">
-                    ⛰ 1,500 m
-                </span>
+.mini-fill.medium {
 
+    background: var(--ochre);
 
-                <span id="placeRating">
-                    ★ 4.8
-                </span>
+}
 
 
-                <span id="placeType">
-                    Hidden Nature Escape
-                </span>
+.mini-fill.high {
 
+    background: #a45b3f;
 
-            </div>
+}
 
 
-        </div>
+.smart-tip {
 
+    display: flex;
 
+    gap: 1.5rem;
 
-        <!-- Hero Buttons -->
+    margin-top: 3rem;
 
-        <div class="hero-actions">
+    padding: 2rem;
 
+    border-left:
+        0.4rem solid var(--ochre);
 
-            <button
-                class="save-button"
-                id="saveButton"
-            >
-                ♡ Save Place
-            </button>
+    background:
+        rgba(197, 150, 61, 0.10);
 
+}
 
-            <button
-                class="share-button"
-                id="shareButton"
-            >
-                ↗ Share
-            </button>
 
+.smart-tip span {
 
-        </div>
+    color: var(--ochre);
 
+    font-size: 2rem;
 
-        <div class="scroll-indicator">
-            Scroll to explore ↓
-        </div>
+}
 
 
-    </section>
+.smart-tip p {
 
+    color:
+        rgba(41, 69, 53, 0.75);
 
+    font-size: 1.5rem;
 
-    <!-- =====================================================
-         QUICK STATS
-    ====================================================== -->
+    line-height: 1.6;
 
-    <section class="quick-stats-section">
+}
 
 
-        <div class="quick-stats">
+/* =========================================================
+   ACTIVITIES
+========================================================= */
 
+.activities-grid {
 
-            <div class="quick-stat">
+    display: grid;
 
-                <span class="stat-icon">
-                    ☀
-                </span>
+    grid-template-columns:
+        repeat(2, 1fr);
 
-                <div>
+    gap: 2rem;
 
-                    <small>
-                        Best Season
-                    </small>
+}
 
-                    <strong id="bestSeason">
-                        October – April
-                    </strong>
 
-                </div>
+.activity-card {
 
-            </div>
+    min-height: 20rem;
 
+    padding: 3rem;
 
+    border-radius: 1.5rem;
 
-            <div class="quick-stat">
+    background:
+        rgba(197, 150, 61, 0.12);
 
-                <span class="stat-icon">
-                    👥
-                </span>
+    border:
+        1px solid rgba(41, 69, 53, 0.10);
 
-                <div>
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 
-                    <small>
-                        Crowd Level
-                    </small>
+}
 
-                    <strong id="quickCrowd">
-                        Low
-                    </strong>
 
-                </div>
+.activity-card:hover {
 
-            </div>
+    transform: translateY(-0.7rem);
 
+    background:
+        rgba(197, 150, 61, 0.20);
 
+    box-shadow:
+        0 1.5rem 3rem rgba(41, 69, 53, 0.12);
 
-            <div class="quick-stat">
+}
 
-                <span class="stat-icon">
-                    ₹
-                </span>
 
-                <div>
+.activity-icon {
 
-                    <small>
-                        Average Budget
-                    </small>
+    font-size: 3rem;
 
-                    <strong id="avgBudget">
-                        ₹12,000 – ₹18,000
-                    </strong>
+    margin-bottom: 2rem;
 
-                </div>
+}
 
-            </div>
 
+.activity-card h3 {
 
+    color: var(--deep-green);
 
-            <div class="quick-stat">
+    font-size: 2rem;
 
-                <span class="stat-icon">
-                    🗓
-                </span>
+    margin-bottom: 1rem;
 
-                <div>
+}
 
-                    <small>
-                        Ideal Stay
-                    </small>
 
-                    <strong id="idealStay">
-                        3 – 4 Days
-                    </strong>
+.activity-card p {
 
-                </div>
+    color:
+        rgba(41, 69, 53, 0.70);
 
-            </div>
+    font-size: 1.5rem;
 
+    line-height: 1.6;
 
+}
 
-            <div class="quick-stat">
 
-                <span class="stat-icon">
-                    📶
-                </span>
+/* =========================================================
+   HOW TO REACH
+========================================================= */
 
-                <div>
+.reach-timeline {
 
-                    <small>
-                        Connectivity
-                    </small>
+    position: relative;
 
-                    <strong id="connectivity">
-                        Moderate
-                    </strong>
+}
 
-                </div>
 
-            </div>
+.reach-step {
 
+    position: relative;
 
-        </div>
+    display: grid;
 
+    grid-template-columns:
+        5rem 1fr;
 
-    </section>
+    gap: 2rem;
 
+    padding-bottom: 3rem;
 
+}
 
-    <!-- =====================================================
-         MAIN CONTENT
-    ====================================================== -->
 
-    <main class="place-main">
+.reach-step:not(:last-child)::after {
 
+    content: "";
 
-        <div class="content-layout">
+    position: absolute;
 
+    left: 2.4rem;
 
-            <!-- =============================================
-                 LEFT MAIN CONTENT
-            ============================================== -->
+    top: 5rem;
 
-            <div class="main-content">
+    bottom: 0;
 
+    border-left:
+        0.2rem dashed rgba(197, 150, 61, 0.55);
 
+}
 
-                <!-- ABOUT -->
 
-                <section class="content-section">
+.step-number {
 
-                    <div class="section-heading">
+    width: 5rem;
 
-                        <span>
-                            01
-                        </span>
+    height: 5rem;
 
-                        <h2>
-                            About the Place
-                        </h2>
+    display: flex;
 
-                    </div>
+    align-items: center;
 
+    justify-content: center;
 
-                    <div
-                        class="about-text"
-                        id="aboutText"
-                    >
+    border-radius: 50%;
 
-                        <p></p>
+    background: var(--deep-green);
 
-                        <p></p>
+    color: var(--cream);
 
-                    </div>
+    font-size: 1.5rem;
 
-                </section>
+    font-weight: 700;
 
+    z-index: 2;
 
+}
 
-                <!-- CROWD LEVEL -->
 
-                <section class="content-section">
+.step-content h3 {
 
+    color: var(--deep-green);
 
-                    <div class="section-heading">
+    font-size: 2rem;
 
-                        <span>
-                            02
-                        </span>
+    margin-bottom: 0.8rem;
 
-                        <h2>
-                            Crowd Level
-                        </h2>
+}
 
-                    </div>
 
+.step-content p {
 
+    color:
+        rgba(41, 69, 53, 0.70);
 
-                    <div class="crowd-card">
+    font-size: 1.5rem;
 
+    line-height: 1.7;
 
-                        <div class="crowd-top">
+}
 
-                            <div>
 
-                                <h3 id="crowdTitle">
-                                    Peaceful & Uncrowded
-                                </h3>
+.permit-warning {
 
-                                <p>
-                                    Current destination popularity
-                                </p>
+    padding: 1.8rem 2rem;
 
-                            </div>
+    margin-top: 2rem;
 
+    border-radius: 1rem;
 
-                            <strong
-                                class="crowd-percentage"
-                                id="crowdPercentage"
-                            >
-                                25%
-                            </strong>
+    background:
+        rgba(164, 91, 63, 0.12);
 
-                        </div>
+    border:
+        1px solid rgba(164, 91, 63, 0.25);
 
+    color: #70402e;
 
+    font-size: 1.4rem;
 
-                        <!-- Progress -->
+    line-height: 1.6;
 
-                        <div class="progress-track">
+}
 
-                            <div
-                                class="progress-fill"
-                                id="crowdProgress"
-                            >
-                            </div>
 
-                        </div>
+/* =========================================================
+   LOCAL TIPS
+========================================================= */
 
+.tips-list {
 
+    display: flex;
 
-                        <!-- Seasonal Crowd -->
+    flex-direction: column;
 
-                        <div class="seasonal-crowd">
+    gap: 1.5rem;
 
+}
 
-                            <div class="season">
 
-                                <span>
-                                    Jan – Mar
-                                </span>
+.tip-item {
 
-                                <div class="mini-track">
+    padding:
+        1.7rem 2rem;
 
-                                    <div
-                                        class="mini-fill low"
-                                        style="width: 25%;"
-                                    ></div>
+    border-left:
+        0.4rem solid var(--ochre);
 
-                                </div>
+    background:
+        rgba(255, 255, 255, 0.35);
 
-                            </div>
+}
 
 
+.tip-item p {
 
-                            <div class="season">
+    color:
+        rgba(41, 69, 53, 0.75);
 
-                                <span>
-                                    Apr – Jun
-                                </span>
+    font-size: 1.6rem;
 
-                                <div class="mini-track">
+    line-height: 1.7;
 
-                                    <div
-                                        class="mini-fill medium"
-                                        style="width: 55%;"
-                                    ></div>
+}
 
-                                </div>
 
-                            </div>
+/* =========================================================
+   BEST TIME
+========================================================= */
 
+.season-chips {
 
+    display: grid;
 
-                            <div class="season">
+    grid-template-columns:
+        repeat(3, 1fr);
 
-                                <span>
-                                    Jul – Sep
-                                </span>
+    gap: 2rem;
 
-                                <div class="mini-track">
+}
 
-                                    <div
-                                        class="mini-fill high"
-                                        style="width: 80%;"
-                                    ></div>
 
-                                </div>
+.season-chip {
 
-                            </div>
+    padding: 2.5rem;
 
+    border-radius: 1.2rem;
 
+    border:
+        1px solid rgba(41, 69, 53, 0.10);
 
-                            <div class="season">
+}
 
-                                <span>
-                                    Oct – Dec
-                                </span>
 
-                                <div class="mini-track">
+.season-chip > span {
 
-                                    <div
-                                        class="mini-fill low"
-                                        style="width: 35%;"
-                                    ></div>
+    display: inline-block;
 
-                                </div>
+    padding:
+        0.5rem 1rem;
 
-                            </div>
+    border-radius: 5rem;
 
+    font-size: 1.1rem;
 
-                        </div>
+    font-weight: 700;
 
+    margin-bottom: 2rem;
 
+}
 
-                        <!-- Smart Tip -->
 
-                        <div class="smart-tip">
+.season-chip strong {
 
-                            <span>
-                                ✦
-                            </span>
+    display: block;
 
-                            <p id="crowdTip">
-                                For the quietest experience, visit during
-                                weekdays and avoid major festival periods.
-                            </p>
+    color: var(--deep-green);
 
-                        </div>
+    font-size: 1.9rem;
 
+    margin-bottom: 0.8rem;
 
-                    </div>
+}
 
 
-                </section>
+.season-chip p {
 
+    font-size: 1.3rem;
 
+    color:
+        rgba(41, 69, 53, 0.65);
 
-                <!-- THINGS TO DO -->
+}
 
-                <section class="content-section">
 
+.season-chip.best {
 
-                    <div class="section-heading">
+    background:
+        rgba(63, 93, 69, 0.12);
 
-                        <span>
-                            03
-                        </span>
+}
 
-                        <h2>
-                            Things To Do
-                        </h2>
 
-                    </div>
+.season-chip.best > span {
 
+    background: var(--forest);
 
-                    <div
-                        class="activities-grid"
-                        id="activitiesGrid"
-                    >
-                    </div>
+    color: white;
 
+}
 
-                </section>
 
+.season-chip.good {
 
+    background:
+        rgba(197, 150, 61, 0.13);
 
-                <!-- HOW TO REACH -->
+}
 
-                <section class="content-section">
 
+.season-chip.good > span {
 
-                    <div class="section-heading">
+    background: var(--ochre);
 
-                        <span>
-                            04
-                        </span>
+    color: white;
 
-                        <h2>
-                            How To Reach
-                        </h2>
+}
 
-                    </div>
 
+.season-chip.off {
 
-                    <div
-                        class="reach-timeline"
-                        id="reachTimeline"
-                    >
-                    </div>
+    background:
+        rgba(123, 86, 53, 0.10);
 
+}
 
 
-                    <div
-                        class="permit-warning"
-                        id="permitWarning"
-                    >
-                        ⚠ Please check all current permit and entry
-                        requirements before travelling.
-                    </div>
+.season-chip.off > span {
 
+    background: var(--earth);
 
-                </section>
+    color: white;
 
+}
 
 
-                <!-- LOCAL TIPS -->
+/* =========================================================
+   MAP
+========================================================= */
 
-                <section class="content-section">
+.map-intro {
 
+    margin-bottom: 2rem;
 
-                    <div class="section-heading">
+    color:
+        rgba(41, 69, 53, 0.70);
 
-                        <span>
-                            05
-                        </span>
+    font-size: 1.6rem;
 
-                        <h2>
-                            Local Tips
-                        </h2>
+}
 
-                    </div>
 
+.map-wrapper {
 
-                    <div
-                        class="tips-list"
-                        id="tipsList"
-                    >
-                    </div>
+    width: 100%;
 
+    min-height: 45rem;
 
-                </section>
+    overflow: hidden;
 
+    border-radius: 1.5rem;
 
+    border:
+        1px solid rgba(41, 69, 53, 0.14);
 
-                <!-- BEST TIME -->
+    box-shadow:
+        0 1rem 3rem rgba(41, 69, 53, 0.10);
 
-                <section class="content-section">
+}
 
 
-                    <div class="section-heading">
+.earthgis-map {
 
-                        <span>
-                            06
-                        </span>
+    width: 100%;
 
-                        <h2>
-                            Best Time To Visit
-                        </h2>
+    min-height: 45rem;
 
-                    </div>
+}
 
 
-                    <div class="season-chips">
+.map-placeholder {
 
+    min-height: 45rem;
 
-                        <div class="season-chip best">
+    display: flex;
 
-                            <span>
-                                BEST
-                            </span>
+    flex-direction: column;
 
-                            <strong>
-                                Oct – Apr
-                            </strong>
+    align-items: center;
 
-                            <p>
-                                Pleasant weather
-                            </p>
+    justify-content: center;
 
-                        </div>
+    background:
+        linear-gradient(
+            135deg,
+            rgba(63, 93, 69, 0.20),
+            rgba(197, 150, 61, 0.18)
+        );
 
+    text-align: center;
 
+}
 
-                        <div class="season-chip good">
 
-                            <span>
-                                GOOD
-                            </span>
+.map-icon {
 
-                            <strong>
-                                May – Jun
-                            </strong>
+    width: 8rem;
 
-                            <p>
-                                Warmer but enjoyable
-                            </p>
+    height: 8rem;
 
-                        </div>
+    display: flex;
 
+    align-items: center;
 
+    justify-content: center;
 
-                        <div class="season-chip off">
+    margin-bottom: 2rem;
 
-                            <span>
-                                OFF
-                            </span>
+    border-radius: 50%;
 
-                            <strong>
-                                Jul – Sep
-                            </strong>
+    background:
+        rgba(245, 237, 218, 0.80);
 
-                            <p>
-                                Heavy rainfall
-                            </p>
+    font-size: 3.5rem;
 
-                        </div>
+}
 
 
-                    </div>
+.map-placeholder h3 {
 
+    color: var(--deep-green);
 
-                </section>
+    font-size: 2.5rem;
 
+    margin-bottom: 1rem;
 
+}
 
-                <!-- MAP -->
 
-                <section class="content-section map-section">
+.map-placeholder p {
 
+    color:
+        rgba(41, 69, 53, 0.70);
 
-                    <div class="section-heading">
+    font-size: 1.5rem;
 
-                        <span>
-                            07
-                        </span>
+}
 
-                        <h2>
-                            Explore on Map
-                        </h2>
 
-                    </div>
+.map-note {
 
+    margin-top: 1.5rem;
 
-                    <p class="map-intro">
+    font-size: 1.3rem;
 
-                        Explore the destination location and surrounding area.
+    color:
+        rgba(41, 69, 53, 0.55);
 
-                    </p>
+}
 
 
+/* =========================================================
+   SIDEBAR
+========================================================= */
 
-                    <!-- EarthGIS Map -->
+.sidebar {
 
-                    <div class="map-wrapper">
+    display: flex;
 
+    flex-direction: column;
 
-                        <div
-                            id="earthgisMap"
-                            class="earthgis-map"
-                        >
+    gap: 3rem;
 
-                            <div class="map-placeholder">
+}
 
-                                <div class="map-icon">
-                                    🗺
-                                </div>
 
-                                <h3>
-                                    Interactive Map
-                                </h3>
+.sidebar-card {
 
-                                <p>
-                                    Connect your EarthGIS API here.
-                                </p>
+    padding: 2.5rem;
 
-                            </div>
+    background:
+        rgba(255, 255, 255, 0.40);
 
-                        </div>
+    border:
+        1px solid rgba(41, 69, 53, 0.10);
 
+    border-radius: 1.5rem;
 
-                    </div>
+}
 
 
-                    <p class="map-note">
+.sidebar-heading {
 
-                        Replace the map initialization in
-                        <strong>place.js</strong> with your EarthGIS API
-                        configuration.
+    display: flex;
 
-                    </p>
+    align-items: flex-end;
 
+    justify-content: space-between;
 
-                </section>
+    gap: 1rem;
 
+    margin-bottom: 2rem;
 
-            </div>
+}
 
 
+.sidebar-heading h3 {
 
-            <!-- =============================================
-                 SIDEBAR
-            ============================================== -->
+    color: var(--deep-green);
 
-            <aside class="sidebar">
+    font-family:
+        "Playfair Display", serif;
 
+    font-size: 2.4rem;
 
+}
 
-                <!-- PHOTO GALLERY -->
 
-                <div class="sidebar-card">
+.sidebar-heading span {
 
+    color: var(--ochre);
 
-                    <div class="sidebar-heading">
+    font-size: 1.1rem;
 
-                        <h3>
-                            Photo Gallery
-                        </h3>
+}
 
-                        <span>
-                            Explore
-                        </span>
 
-                    </div>
+/* GALLERY */
 
+.gallery-grid {
 
-                    <div
-                        class="gallery-grid"
-                        id="galleryGrid"
-                    >
-                    </div>
+    display: grid;
 
+    grid-template-columns:
+        repeat(2, 1fr);
 
-                </div>
+    gap: 1rem;
 
+}
 
 
-                <!-- NEARBY PLACES -->
+.gallery-item {
 
-                <div class="sidebar-card">
+    height: 12rem;
 
+    overflow: hidden;
 
-                    <div class="sidebar-heading">
+    border-radius: 1rem;
 
-                        <h3>
-                            Nearby Places
-                        </h3>
+    cursor: pointer;
 
-                        <span>
-                            Around here
-                        </span>
+}
 
-                    </div>
 
+.gallery-item img {
 
-                    <div
-                        class="nearby-list"
-                        id="nearbyList"
-                    >
-                    </div>
+    width: 100%;
 
+    height: 100%;
 
-                </div>
+    object-fit: cover;
 
+    transition: transform 0.35s ease;
 
+}
 
-                <!-- SAVE CARD -->
 
-                <div class="sidebar-save-card">
+.gallery-item:hover img {
 
-                    <span>
-                        ♡
-                    </span>
+    transform: scale(1.10);
 
-                    <h3>
-                        Want to visit later?
-                    </h3>
+}
 
-                    <p>
-                        Save this place to your wishlist and come back
-                        whenever you are ready to explore.
-                    </p>
 
-                    <button
-                        id="sidebarSaveButton"
-                    >
-                        Save to Wishlist
-                    </button>
+/* NEARBY */
 
-                </div>
+.nearby-list {
 
+    display: flex;
 
-            </aside>
+    flex-direction: column;
 
+}
 
-        </div>
 
+.nearby-item {
 
-    </main>
+    display: flex;
 
+    justify-content: space-between;
 
+    align-items: center;
 
-    <!-- =====================================================
-         SIMILAR PLACES
-    ====================================================== -->
+    gap: 1rem;
 
-    <section class="similar-section">
+    padding: 1.6rem 0;
 
+    text-decoration: none;
 
-        <div class="similar-container">
+    border-bottom:
+        1px solid rgba(41, 69, 53, 0.10);
 
+}
 
-            <div class="similar-heading">
 
-                <div>
+.nearby-item:last-child {
 
-                    <span>
-                        KEEP EXPLORING
-                    </span>
+    border-bottom: none;
 
-                    <h2>
-                        Similar Places
-                    </h2>
+}
 
-                </div>
 
+.nearby-item strong {
 
-                <a href="places.html">
-                    View All Places →
-                </a>
+    color: var(--deep-green);
 
-            </div>
+    font-size: 1.5rem;
 
+}
 
 
-            <div
-                class="similar-grid"
-                id="similarGrid"
-            >
-            </div>
+.nearby-item span {
 
+    color:
+        rgba(41, 69, 53, 0.55);
 
-        </div>
+    font-size: 1.2rem;
 
+}
 
-    </section>
 
+.nearby-item:hover strong {
 
+    color: var(--ochre);
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+}
 
-    <footer class="footer">
 
-        <div>
+/* SAVE */
 
-            <strong>
-                Beyond The Crowd
-            </strong>
+.sidebar-save-card {
 
-            <span>
-                Explore the unexplored.
-            </span>
+    padding: 3rem;
 
-        </div>
+    border-radius: 1.5rem;
 
+    background: var(--deep-green);
 
-        <p>
-            Discover places beyond the usual tourist trail.
-        </p>
+    color: var(--cream);
 
-    </footer>
+}
 
 
+.sidebar-save-card > span {
 
-    <script src="script.js"></script>
+    font-size: 3rem;
 
-    <script src="place.js"></script>
+    color: var(--ochre);
 
+}
 
-</body>
 
-</html>
+.sidebar-save-card h3 {
+
+    margin:
+        2rem 0 1rem;
+
+    font-family:
+        "Playfair Display", serif;
+
+    font-size: 2.6rem;
+
+}
+
+
+.sidebar-save-card p {
+
+    color:
+        rgba(245, 237, 218, 0.72);
+
+    font-size: 1.4rem;
+
+    line-height: 1.7;
+
+}
+
+
+.sidebar-save-card button {
+
+    width: 100%;
+
+    margin-top: 2.5rem;
+
+    padding: 1.3rem;
+
+    border: none;
+
+    border-radius: 1rem;
+
+    background: var(--ochre);
+
+    color: white;
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   SIMILAR PLACES
+========================================================= */
+
+.similar-section {
+
+    padding:
+        9rem 5%;
+
+    background:
+        rgba(197, 150, 61, 0.08);
+
+    border-top:
+        1px solid rgba(41, 69, 53, 0.08);
+
+}
+
+
+.similar-container {
+
+    max-width: 130rem;
+
+    margin: auto;
+
+}
+
+
+.similar-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 3rem;
+
+    margin-bottom: 4rem;
+
+}
+
+
+.similar-heading span {
+
+    color: var(--ochre);
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15rem;
+
+}
+
+
+.similar-heading h2 {
+
+    margin-top: 1rem;
+
+    color: var(--deep-green);
+
+    font-family:
+        "Playfair Display", serif;
+
+    font-size: 4.5rem;
+
+}
+
+
+.similar-heading a {
+
+    color: var(--deep-green);
+
+    text-decoration: none;
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+}
+
+
+.similar-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 2rem;
+
+}
+
+
+.similar-card {
+
+    min-height: 34rem;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 1.5rem;
+
+    background-size: cover;
+
+    background-position: center;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.similar-card:hover {
+
+    transform: translateY(-0.7rem);
+
+}
+
+
+.similar-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(20, 38, 29, 0.88),
+            rgba(20, 38, 29, 0.05)
+        );
+
+}
+
+
+.similar-card-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding: 2.5rem;
+
+    color: white;
+
+}
+
+
+.similar-card span {
+
+    font-size: 1.2rem;
+
+    color:
+        rgba(255, 255, 255, 0.70);
+
+}
+
+
+.similar-card h3 {
+
+    margin-top: 0.7rem;
+
+    font-family:
+        "Playfair Display", serif;
+
+    font-size: 2.6rem;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    padding:
+        3rem 5%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 2rem;
+
+    background:
+        rgba(41, 69, 53, 0.96);
+
+    color: var(--cream);
+
+}
+
+
+.footer div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+}
+
+
+.footer strong {
+
+    font-family:
+        "Playfair Display", serif;
+
+    font-size: 2rem;
+
+}
+
+
+.footer span,
+.footer p {
+
+    color:
+        rgba(245, 237, 218, 0.65);
+
+    font-size: 1.3rem;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .quick-stats {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+
+    .quick-stat {
+
+        border-bottom:
+            1px solid rgba(41, 69, 53, 0.10);
+
+    }
+
+
+    .content-layout {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .sidebar {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        align-items: start;
+
+    }
+
+
+    .sidebar-save-card {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .similar-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        padding: 0 2rem;
+
+    }
+
+
+    .website-name,
+    .nav-links,
+    .auth-link {
+
+        display: none;
+
+    }
+
+
+    .brand,
+    .nav-actions {
+
+        min-width: auto;
+
+    }
+
+
+    .logo img {
+
+        width: 65px;
+
+    }
+
+
+    .place-hero {
+
+        padding:
+            14rem 6%
+            8rem;
+
+        min-height: 85vh;
+
+        background-attachment: scroll;
+
+    }
+
+
+    .place-hero h1 {
+
+        font-size: 5.5rem;
+
+        letter-spacing: -0.2rem;
+
+    }
+
+
+    .hero-actions {
+
+        position: relative;
+
+        right: auto;
+
+        bottom: auto;
+
+        margin-top: 3rem;
+
+    }
+
+
+    .scroll-indicator {
+
+        display: none;
+
+    }
+
+
+    .quick-stats-section {
+
+        margin-top: 0;
+
+        padding: 2rem;
+
+    }
+
+
+    .quick-stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .quick-stat {
+
+        border-right: none;
+
+    }
+
+
+    .place-main {
+
+        padding:
+            7rem 6%;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 3.3rem;
+
+    }
+
+
+    .activities-grid,
+    .season-chips,
+    .seasonal-crowd {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .crowd-card {
+
+        padding: 2.3rem;
+
+    }
+
+
+    .sidebar {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .sidebar-save-card {
+
+        grid-column: auto;
+
+    }
+
+
+    .similar-section {
+
+        padding:
+            7rem 6%;
+
+    }
+
+
+    .similar-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .similar-heading h2 {
+
+        font-size: 3.6rem;
+
+    }
+
+
+    .similar-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .footer {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
