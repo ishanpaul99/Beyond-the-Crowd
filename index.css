@@ -462,7 +462,7 @@ ol {
     width: 100%;
     min-height: 100vh;
 
-    padding: 6rem 5% 20rem;
+    padding: 6rem 5% 10rem;
 
     position: relative;
     overflow: hidden;
@@ -713,7 +713,7 @@ ol {
 
     margin: 0 auto;
 
-    padding: 1rem 0 15rem;
+    padding: 2rem 0 18rem;
 
     color: var(--deep-green);
 }
