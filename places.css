@@ -141,29 +141,9 @@ button {
 
 }
 
-
-.logo img {
-
-    width: 5.5rem;
-
-    display: block;
-
-}
-
-
 .website-name {
-
-    font-family:
-        "Playfair Display", serif;
-
-    font-size: 2.1rem;
-
-    font-weight: 600;
-
-    color: var(--deep-green);
-
+    margin-top: 50rem;
 }
-
 
 .nav-links {
 
