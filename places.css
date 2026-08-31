@@ -130,19 +130,11 @@ button {
 
 
 .brand {
-
     display: flex;
-
     align-items: center;
-
-    gap: 1.2rem;
+    gap: 12px;
 
     min-width: 22rem;
-
-}
-
-.website-name {
-    margin-top: 50rem;
 }
 
 .nav-links {
