@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="chatbot.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+
+        <!-- Brand -->
+
+        <div class="brand">
+
+            <div class="logo">
+                <a href="index.html"><img src="images/web-logo.png" alt="logo" width="65px"></a>
+            </div>
+
+            <div class="website-name">
+                <a href="index.html"><img src="images/web-name.png" alt="web-name" width="100px"></a>
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#features">
+                Features
+            </a>
+
+            <a href="places.html">
+                Places
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </div>
+
+
+        <!-- Right Side -->
+
+        <div class="nav-actions">
+
+            <a href="signin.html" class="auth-link">
+                Sign In
+            </a>
+
+            <a href="register.html" class="dark-btn">
+                Register
+            </a>
+
+            <div class="profile active-profile">
+
+                <div class="profile-icon">
+                    👤
+                </div>
+
+                <span>Profile</span>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= PROFILE PAGE ================= -->
+
+    <main class="profile-page">
+
+
+        <section class="profile-container">
+
+
+            <!-- ================= PROFILE IMAGE ================= -->
+
+            <div class="profile-visual">
+
+                <div class="profile-picture">
+
+                    <!--
+                        Backend can insert the user's image here.
+                        Keep the src empty for now.
+                    -->
+
+                    <img
+                        src=""
+                        alt="Profile picture"
+                        class="profile-image"
+                    >
+
+
+                    <!--
+                        Fallback shown when there is
+                        no profile image.
+                    -->
+
+                    <div class="profile-fallback">
+                        ID
+                    </div>
+
+                </div>
+
+
+                <h2>
+                    INPUT DATA
+                </h2>
+
+            </div>
+
+
+
+            <!-- ================= PROFILE DETAILS ================= -->
+
+            <div class="profile-details">
+
+                <h2>
+                    Your Profile
+                </h2>
+
+                <p class="profile-intro">
+                    Your journey starts with knowing how you travel.
+                </p>
+
+
+                <div class="details-list">
+
+
+                    <div class="detail">
+
+                        <span class="detail-label">
+                            Name
+                        </span>
+
+                        <span class="detail-value">
+                            INPUT DATA
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span class="detail-label">
+                            Email
+                        </span>
+
+                        <span class="detail-value">
+                            INPUT DATA
+                        </span>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span class="detail-label">
+                            Location
+                        </span>
+
+                        <span class="detail-value">
+                            INPUT DATA
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= CHATBOT ================= -->
+
+<div class="chatbot" id="chatbot">
+
+    <div class="chatbot-bubble" id="chatbotBubble">
+
+        <strong>Hey there! 👋</strong>
+
+        <small>
+            Need help finding somewhere new?
+        </small>
+
+    </div>
+
+
+    <div class="chat-window" id="chatWindow">
+
+        <div class="chat-header">
+
+            <h4>Your Travel Companion</h4>
+
+            <button
+                class="chat-close"
+                id="chatClose">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="chat-messages" id="chatMessages">
+
+            <div class="bot-message">
+                Hi! I'm your travel companion. 🌿
+                Tell me what kind of place you're looking for!
+            </div>
+
+        </div>
+
+
+        <div class="chat-input-area">
+
+            <input
+                type="text"
+                id="chatInput"
+                class="chat-input"
+                placeholder="Ask me anything..."
+            >
+
+            <button
+                class="chat-send"
+                id="chatSend">
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <img
+        src="images/mascot.png"
+        alt="Travel assistant"
+        class="chatbot-mascot"
+        id="chatbotMascot">
+
+</div>
+
+</script>
+
+<script src="chatbot.js"></script>
+
+</body>
+
+</html>
