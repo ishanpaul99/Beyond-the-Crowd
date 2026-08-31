@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register</title>
+
+    <link rel="stylesheet" href="register.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <!-- Logo + Website Name -->
+        <div class="brand">
+
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/web-logo.png" alt="logo" width="65px">
+                </a>
+            </div>
+
+            <div class="website-name">
+                <a href="index.html"><img src="images/web-name.png" alt="web-name" width="100px"></a>
+            </div>
+
+        </div>
+
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#features">
+                Features
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </div>
+    </nav>
+
+
+    <!-- ================= REGISTRATION ================= -->
+
+    <main class="register-page">
+
+        <section class="register-card">
+
+            <h2>Create your account</h2>
+
+            <!-- Registration Form -->
+
+            <form class="register-form">
+
+                <!-- Full Name -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="form-group">
+
+                    <label for="confirm-password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        name="confirm-password"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="form-group">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="Enter your city / location"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Terms -->
+
+                <div class="terms">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            name="terms"
+                            required
+                        >
+
+                        <span>
+                            I agree to the Terms &amp; Conditions
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- Register Button -->
+
+                <button
+                    type="submit"
+                    class="register-button"
+                >
+                    Register
+                </button>
+
+            </form>
+
+
+            <!-- Sign In -->
+
+            <p class="signin-text">
+                Already have an account?
+                <a href="signin.html">Sign In</a>
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
