@@ -2231,3 +2231,111 @@ button {
     }
 
 }
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 4rem 2rem 2.5rem;
+
+    box-sizing: border-box;
+}
+
+
+/* Logo */
+
+.footer-logo img {
+    width: 55px;
+    height: auto;
+
+    display: block;
+}
+
+.footer-logo {
+    margin-bottom: 1.2rem;
+}
+
+
+/* Navigation links */
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+
+    margin-bottom: 1.4rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+
+    color: #294535;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+    opacity: 0.6;
+}
+
+
+/* Instagram placeholder */
+
+.footer-social {
+    margin-bottom: 1.3rem;
+}
+
+.instagram-placeholder {
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 1.1rem;
+
+    color: #294535;
+
+    opacity: 0.7;
+}
+
+
+/* Credit */
+
+.footer-credit {
+    margin: 0;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 0.95rem;
+
+    color: #294535;
+
+    opacity: 0.65;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        padding-top: 3rem;
+    }
+
+    .footer-links {
+        gap: 1.4rem;
+    }
+
+}
